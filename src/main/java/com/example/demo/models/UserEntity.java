@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -14,6 +15,7 @@ public class UserEntity {
     private String username;
     private String password;
     private String email;
+    @JsonIgnore
     @OneToMany(mappedBy = "user_id" , fetch = FetchType.LAZY)
     private Set<TaskEntity> task = new HashSet<>();
 
